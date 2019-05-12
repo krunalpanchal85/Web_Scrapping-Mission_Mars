@@ -81,7 +81,7 @@ def scrape_info():
         hem_image_urls.append(hemisphere)
         browser.back()
 
-        #hem_image_urls
+        hem_image_urls
 #---------------------------------------------------------------------------------------------------------------------------------
     # Store data in a dictionary
     mars_data = {
@@ -90,7 +90,7 @@ def scrape_info():
         "image_url": image_url,
         'mars_weather': mars_weather,
         'mars_info' : mars_info,
-        'hem_image_urls' : hem_image_urls
+        'hem_image_urls' : hem_image_urls,
     }
 
     #print(mars_data)

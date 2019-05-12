@@ -2,60 +2,64 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Mission to Mars(Scrape)</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta http-equiv="X-UA-Compatible" content="ie=edge">
+ <title>Mars</title>
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+ <!-- read in style.css -->
+ <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
-  <div class="container-fluid">
-    <div class="jumbotron text-center">
-      <h1>Mission to Mars</h1>
-      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Get Data!</a></p>
-    </div>
-    
-    <img src="{{image_url}}" alt="Featured Mars Image">
-    
-    <div class="row">
-      <div class="col">
-        <h3 class="text-center">Cards</h3>
-        <div class="card" style="width: 18rem;">
-            <div class="card-body">
-              <h5 class="card-title">Latest Mars News</h5>
-              <p class="card-text">{news_titles}</p>
-            </div>
-          </div>
-        </div>
-    </div>
 
-    <div class="row">
-        <div class="col">
-          <h3 class="text-center">Cards</h3>
-          <div class="card" style="width: 18rem;">
-              <div class="card-body">
-                <h5 class="card-title">Latest Mars News</h5>
-                <p class="card-text">{news_p}</p>
-              </div>
-            </div>
-          </div>
-      </div>
+<div class="container">
+   <div class="jumbotron text-center">
+     <h1>Mission to Mars</h1>
+     <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
+   </div>
 
-      <div class="row">
-            <div class="col">
-            <h3 class="text-center">Cards</h3>
-            <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                    <h5 class="card-title">Current Weather on Mars</h5>
-                    <p class="card-text">{mars_info}</p>
-                </div>
-                </div>
-            </div>
-        </div>
+ <div class = "row">
+   <div class = "col-md-12">
+     <h3>Latest Mars News:</h3>
+     <h4>{{ mars.news_titles }}</h4>
+     <p>{{ mars.news_p }}</p>
+   </div>
+ </div>
 
-        <img src="{{hem_image_urls}}" alt="Mars Hemispheres">
-</div>
-</div>
-</body>
+   <div class="row">
+     <div class="col-md-8">
+       <h3>Featured Mars Image:</h3>
+       <img src="{{ mars.image_url }}", alt="Mars Featured Image" class="img-responsive">
+     </div>
+     <div class="col-md-4">
+       <div class="card">
+           <div class="card-body">
+             <h3 class="card-title">Current Weather on Mars:</h3>
+             <p class="card-text">{{ mars.mars_weather }}</p>
+           </div>
+       </div>
+           <br>
+           <br>
+           <br>
+           <br>
+           <br>
+             <h3>Mars Facts:</h3>
+             <p>{{ mars.mars_info | safe }}</p>
+     </div>
+   </div>
+   <div class="row">
+     <h2><center>Mars Hemispheres:</h2></center>
+     <div class="row">
+       <div class="col-md-6">
+         {% for hemisphere in mars["hemispheres"] %}
+          <img src="{{hem_image_urls.URL}}" alt="..." class="center">
+          <center><h3>{{hem_image_urls.Title }}</h3></center>
+         {% endfor %}
+         </div>
+   </div>
+ </div>
+ </body>
 </html>
